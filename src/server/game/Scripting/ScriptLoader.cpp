@@ -36,6 +36,10 @@ void AddSC_npc_mount();
 void AddSC_ArgentTournament();
 //Revenge od Dalaran squidrrel
 void AddSC_dalaran_squirrel();
+//Proff Vendor
+void AddSC_npc_proff();
+//Morpher
+void AddSC_npc_ultimate();
 
 // spells
 void AddSC_deathknight_spell_scripts();
@@ -1274,5 +1278,7 @@ void AddCustomScripts()
     AddSC_ArgentTournament();
     AddSC_dalaran_squirrel();
 	AddSC_fake_commandscript();
+    AddSC_npc_proff();
+    AddSC_npc_ultimate();
 #endif
 }
