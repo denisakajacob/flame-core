@@ -2519,6 +2519,9 @@ class Player : public Unit, public GridObject<Player>
         float GetAverageItemLevel();
         bool isDebugAreaTriggers;
 
+        bool IsArenaSpectator() const { return m_spectator; }
+        void SetArenaSpectator(bool spectator);
+
         void ClearWhisperWhiteList() { WhisperList.clear(); }
         void AddWhisperWhiteList(uint64 guid) { WhisperList.push_back(guid); }
         bool IsInWhisperWhiteList(uint64 guid);
@@ -2921,6 +2924,8 @@ class Player : public Unit, public GridObject<Player>
         InstanceTimeMap _instanceResetTimes;
         uint32 _pendingBindId;
         uint32 _pendingBindTimer;
+
+        bool m_spectator;
 };
 
 void AddItemsSetItem(Player*player, Item* item);

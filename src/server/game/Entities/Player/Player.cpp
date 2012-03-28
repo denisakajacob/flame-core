@@ -17520,6 +17520,8 @@ bool Player::LoadFromDB(uint32 guid, SQLQueryHolder *holder)
 
     _LoadEquipmentSets(holder->GetPreparedResult(PLAYER_LOGIN_QUERY_LOADEQUIPMENTSETS));
 
+    SetArenaSpectator(false);
+
     return true;
 }
 
@@ -25730,6 +25732,26 @@ void Player::CreateWowarmoryFeed(uint32 type, uint32 data, uint32 item_guid, uin
     m_wowarmory_feeds.push_back(feed);
 }
 /** World of Warcraft Armory **/
+
+void Player::SetArenaSpectator(bool spectator)
+{
+    if (spectator)
+    {
+        if (IsArenaSpectator())
+        {
+            sLog->outError("Player::SetArenaSpectator: player (GUID: %u) already has arena spectaator state.", GetGUIDLow());
+            return;
+        }
+
+        if (SpellInfo const * spellInfo = sSpellMgr->GetSpellInfo(8326))
+            Aura::TryCreate(spellInfo, MAX_EFFECT_MASK, this, this);
+    }
+    else
+        RemoveAurasDueToSpell(8326);
+
+    m_spectator = spectator;
+
+}
 
 bool Player::IsInWhisperWhiteList(uint64 guid)
 {

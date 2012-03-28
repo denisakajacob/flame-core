@@ -935,6 +935,18 @@ void Battleground::EndBattleground(uint32 winner)
 
     if (winmsg_id)
         SendMessageToAll(winmsg_id, CHAT_MSG_BG_SYSTEM_NEUTRAL);
+
+    //Возвращает всех наблюдателей на позиции, где была использована команда
+    Map::PlayerList const &playerlist = m_Map->GetPlayers();
+
+    if (!playerlist.isEmpty())
+        for (Map::PlayerList::const_iterator i = playerlist.begin(); i != playerlist.end(); ++i)
+            if (Player* player = i->getSource())
+                if (player->IsArenaSpectator())
+                {
+                    player->SetArenaSpectator(false);
+                    player->TeleportTo(player->m_recallMap, player->m_recallX, player->m_recallY, player->m_recallZ, player->m_recallO);
+                }
 }
 
 uint32 Battleground::GetBonusHonorFromKill(uint32 kills) const

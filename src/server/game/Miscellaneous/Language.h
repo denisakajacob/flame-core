@@ -1088,6 +1088,13 @@ enum TrinityStrings
     LANG_AUTO_BROADCAST                 = 11000,
     LANG_INVALID_REALMID                = 11001,
 
+    LANG_SPECTATOR_FORBID                        = 11608,
+    LANG_SPECTATOR_NOT_ON_ARENA                  = 11609,
+    LANG_SPECTATOR_ON_ARENA_OR_BG                = 11610,
+    LANG_SPECTATOR_ALREADY_SPECTATOR             = 11611,
+    LANG_SPECTATOR_DISABLED                      = 11612,
+    LANG_SPECTATOR_CAN_NOT_CHAT                  = 11613,
+
     // NOT RESERVED IDS                   12000-1999999999
     // `db_script_string` table index     2000000000-2000009999 (MIN_DB_SCRIPT_STRING_ID-MAX_DB_SCRIPT_STRING_ID)
     // For other tables maybe             2000010000-2147483647 (max index)

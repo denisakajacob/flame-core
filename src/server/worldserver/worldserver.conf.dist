@@ -2612,6 +2612,22 @@ Arena.ArenaStartPersonalRating = 0
 Arena.ArenaStartMatchmakerRating = 1500
 
 #
+#    Arena.Spectators.Enable
+#        Description: Arena spectator system state.
+#        Default:     0 - (Disabled)
+#                     1 - (Enabled)
+
+Arena.Spectators.Enable = 0
+
+#    Arena.Spectators.Only.Friend
+#        Description: If this option enabled you can ONLY spectate players,
+#                     which are in you friendlist.
+#        Default:     1 - (Enabled)
+#                     0 - (Disabled)
+
+Arena.Spectators.Enable = 1
+
+#
 ###################################################################################################
 
 ###################################################################################################
