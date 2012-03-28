@@ -707,3 +707,4 @@ void Transport::UpdateNPCPositions()
         GetMap()->CreatureRelocation(npc, x, y, z, o, false);
     }
 }
+
