@@ -884,11 +884,11 @@ class npc_muradin_gunship : public CreatureScript
                     case ACTION_DONE:
                         if (Creature* pAllianceBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_SKYBREAKER_BOSS)))
                         {
-                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pAllianceBoss);
+                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pAllianceBoss);
                         }
                         if (Creature* pHordeBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_ORGRIMMAR_HAMMER_BOSS)))
                         {
-                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pHordeBoss);
+                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pHordeBoss);
                         }
 
                         me->SetReactState(REACT_PASSIVE);
@@ -908,11 +908,11 @@ class npc_muradin_gunship : public CreatureScript
                         Talk(SAY_ALLIANCE_DEFEAT);
                         if (Creature* pAllianceBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_SKYBREAKER_BOSS)))
                         {
-                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pAllianceBoss);
+                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pAllianceBoss);
                         }
                         if (Creature* pHordeBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_ORGRIMMAR_HAMMER_BOSS)))
                         {
-                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pHordeBoss);
+                            _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pHordeBoss);
                         }
                         if (Transport* skybreaker = me->GetTransport())
                             StopFight(skybreaker, CheckUnfriendlyShip(me, _instance, DATA_GB_HIGH_OVERLORD_SAURFANG));
@@ -957,7 +957,7 @@ class npc_muradin_gunship : public CreatureScript
 
             void UpdateAI(const uint32 diff)
             {
-                if (me->HasUnitState(UNIT_STAT_CASTING) || me->IsInEvadeMode())
+                if (me->HasUnitState(UNIT_STATE_CASTING) || me->IsInEvadeMode())
                     return;
 
                 if (!HealthAbovePct(75))
@@ -1191,7 +1191,7 @@ class npc_gunship_skybreaker : public CreatureScript
             {
                 me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_DISABLE_MOVE);
                 SetCombatMovement(false);
-                _instance->SendEncounterUnit(ENCOUNTER_FRAME_ADD, me);
+                _instance->SendEncounterUnit(ENCOUNTER_FRAME_ENGAGE, me);
                 me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
             }
 
@@ -1248,7 +1248,7 @@ class npc_gunship_orgrimmar : public CreatureScript
             {
                 me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_DISABLE_MOVE);
                 SetCombatMovement(false);
-                _instance->SendEncounterUnit(ENCOUNTER_FRAME_ADD, me);
+                _instance->SendEncounterUnit(ENCOUNTER_FRAME_ENGAGE, me);
                 me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
             }
 
@@ -1341,7 +1341,7 @@ class npc_korkron_axethrower_rifleman : public CreatureScript
                 if (_instance->GetBossState(DATA_GUNSHIP_EVENT) != IN_PROGRESS)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 me->AI()->AttackStart(SelectRandomPlayerInTheMaps(me->GetMap()));
@@ -1447,7 +1447,7 @@ class npc_sergeant : public CreatureScript
                 if(_instance->GetBossState(DATA_GUNSHIP_EVENT) != IN_PROGRESS)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -1578,7 +1578,7 @@ class npc_marine_or_reaver : public CreatureScript
                 if(_instance->GetBossState(DATA_GUNSHIP_EVENT) != IN_PROGRESS)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -1721,7 +1721,7 @@ class npc_gunship_mage : public CreatureScript
                 if(_instance->GetBossState(DATA_GUNSHIP_EVENT) != IN_PROGRESS)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 if (me->GetGUID() == _instance->GetData64(DATA_GB_BATTLE_MAGE))
@@ -1854,7 +1854,7 @@ class npc_mortar_soldier_or_rocketeer : public CreatureScript
                 if(_instance->GetBossState(DATA_GUNSHIP_EVENT) != IN_PROGRESS)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -2089,11 +2089,11 @@ class npc_saurfang_gunship : public CreatureScript
                      case ACTION_DONE:
                          if (Creature* pAllianceBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_SKYBREAKER_BOSS)))
                          {
-                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pAllianceBoss);
+                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pAllianceBoss);
                          }
                          if (Creature* pHordeBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_ORGRIMMAR_HAMMER_BOSS)))
                          {
-                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pHordeBoss);
+                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pHordeBoss);
                          }
 
                          me->SetReactState(REACT_PASSIVE);
@@ -2113,11 +2113,11 @@ class npc_saurfang_gunship : public CreatureScript
                          Talk(SAY_HORDE_DEFEAT);
                          if (Creature* pHordeBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_ORGRIMMAR_HAMMER_BOSS)))
                          {
-                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pHordeBoss);
+                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pHordeBoss);
                          }
                          if (Creature* pAllianceBoss = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_SKYBREAKER_BOSS)))
                          {
-                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_REMOVE, pAllianceBoss);
+                             _instance->SendEncounterUnit(ENCOUNTER_FRAME_DISENGAGE, pAllianceBoss);
                          }
                          if (Transport* orgrimmar = me->GetTransport())
                             StopFight(orgrimmar,CheckUnfriendlyShip(me,_instance, DATA_GB_MURADIN_BRONZEBEARD));
@@ -2162,7 +2162,7 @@ class npc_saurfang_gunship : public CreatureScript
 
             void UpdateAI(const uint32 diff)
             {
-                if (me->HasUnitState(UNIT_STAT_CASTING) || me->IsInEvadeMode())
+                if (me->HasUnitState(UNIT_STATE_CASTING) || me->IsInEvadeMode())
                     return;
 
                 if(_instance->GetBossState(DATA_GUNSHIP_EVENT) == IN_PROGRESS)
@@ -2513,7 +2513,7 @@ class npc_korkron_primalist: public CreatureScript
                 if (!instance)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -2632,7 +2632,7 @@ class npc_korkron_defender: public CreatureScript
                 if (!instance)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -2745,7 +2745,7 @@ class npc_skybreaker_vindicator: public CreatureScript
                 if (!instance)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -2852,7 +2852,7 @@ class npc_skybreaker_protector: public CreatureScript
                 if (!instance)
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
@@ -2936,9 +2936,9 @@ class npc_icc_spire_frostwyrm: public CreatureScript
             {
                 landed = false;
                 events.Reset();
-                me->SetFlying(true);
+                me->SetCanFly(true);
                 me->SetReactState(REACT_AGGRESSIVE);
-                me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 events.ScheduleEvent(EVENT_FROST_BREATH, 20000);
                 events.ScheduleEvent(EVENT_BLIZZARD, 25000);
                 events.ScheduleEvent(EVENT_CLEAVE, 10000);
@@ -2962,8 +2962,8 @@ class npc_icc_spire_frostwyrm: public CreatureScript
                     else
                         Talk(SAY_FROSTWYRM_LAND_A_1);
                     landed = true;
-                    me->SetFlying(false);
-                    me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->SetCanFly(false);
+                    me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                     me->SetInCombatWith(who);
                     me->AddThreat(who, 1.0f);
                     me->GetMotionMaster()->MoveChase(who);
@@ -2975,7 +2975,7 @@ class npc_icc_spire_frostwyrm: public CreatureScript
                 if (!UpdateVictim())
                     return;
 
-                if (me->HasUnitState(UNIT_STAT_CASTING))
+                if (me->HasUnitState(UNIT_STATE_CASTING))
                     return;
 
                 events.Update(diff);
