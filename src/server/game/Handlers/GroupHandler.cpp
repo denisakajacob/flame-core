@@ -78,6 +78,17 @@ void WorldSession::HandleGroupInviteOpcode(WorldPacket & recv_data)
     // no player
     if (!player)
     {
+	
+        if (sWorld->getBoolConfig(CONFIG_FAKE_WHO_LIST))
+        {
+            QueryResult result = CharacterDatabase.PQuery("SELECT guid FROM characters WHERE name = '%s' AND online > 1", membername.c_str());
+            if (result)
+            {
+                SendPartyResult(PARTY_OP_INVITE, membername, ERR_ALREADY_IN_GROUP_S);
+                return;
+            }
+        }
+
         SendPartyResult(PARTY_OP_INVITE, membername, ERR_BAD_PLAYER_NAME_S);
         return;
     }

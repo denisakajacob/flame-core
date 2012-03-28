@@ -1256,6 +1256,7 @@ void AddBattlegroundScripts()
 
 #ifdef SCRIPTS
 /* This is where custom scripts' loading functions should be declared. */
+    void AddSC_fake_commandscript();
 
 #endif
 
@@ -1272,5 +1273,6 @@ void AddCustomScripts()
     AddSC_npc_mount();		
     AddSC_ArgentTournament();
     AddSC_dalaran_squirrel();
+	AddSC_fake_commandscript();
 #endif
 }

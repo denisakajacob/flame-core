@@ -1629,6 +1629,14 @@ AllowTwoSide.Trade = 0
 
 TalentsInspecting = 1
 
+#    Fake.WHO.List
+#        Add fake players to fill in WHO LIST (who is online list, "O" button) if there is less then
+#        49 real players online (use the .fake command to set account or characters as fake online)
+#        Default: 0 (disabled)
+#                 1 (enabled)
+
+Fake.Who.List = 0
+
 #
 ###################################################################################################
 

@@ -1087,6 +1087,7 @@ enum TrinityStrings
     // Use for custom patches             11000-11999
     LANG_AUTO_BROADCAST                 = 11000,
     LANG_INVALID_REALMID                = 11001,
+    LANG_FAKE_DND                       = 12002,
 
     LANG_SPECTATOR_FORBID                        = 11608,
     LANG_SPECTATOR_NOT_ON_ARENA                  = 11609,

@@ -495,10 +495,6 @@ class instance_icecrown_citadel : public InstanceMapScript
                         if (GetBossState(DATA_THE_LICH_KING) == DONE)
                             go->SetRespawnTime(7 * DAY);
                         break;
-                    case GO_DREAMWALKER_CACHE_10_N:
-                    case GO_DREAMWALKER_CACHE_25_N:
-                    case GO_DREAMWALKER_CACHE_10_H:
-                    case GO_DREAMWALKER_CACHE_25_H:
                         uiDreamwalkerCache = go->GetGUID();
                         break;
                     default:
