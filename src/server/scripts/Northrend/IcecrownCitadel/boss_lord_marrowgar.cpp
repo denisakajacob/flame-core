@@ -145,6 +145,11 @@ class boss_lord_marrowgar : public CreatureScript
                     Talk(SAY_ENTER_ZONE);
                     _introDone = true;
                 }
+                else if (me->IsWithinDistInMap(who, 20.0f))
+                {
+                    me->SetReactState(REACT_AGGRESSIVE);
+                    me->SetInCombatWithZone();
+                }
             }
 
             void UpdateAI(uint32 const diff)
