@@ -336,6 +336,12 @@ enum GameObjectsIds
     GO_CACHE_OF_THE_DREAMWALKER_10H         = 202338,
     GO_CACHE_OF_THE_DREAMWALKER_25H         = 202340,
 
+    // Loot Chest
+    GO_DREAMWALKER_CACHE_10_N               = 201959,
+    GO_DREAMWALKER_CACHE_25_N               = 202339,
+    GO_DREAMWALKER_CACHE_10_H               = 202338,
+    GO_DREAMWALKER_CACHE_25_H               = 202340,
+
     // Sindragosa
     GO_SINDRAGOSA_ENTRANCE_DOOR             = 201373,
     GO_SINDRAGOSA_SHORTCUT_ENTRANCE_DOOR    = 201369,
