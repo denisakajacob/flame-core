@@ -81,7 +81,7 @@ protected:
     typedef void (SplineBase::*InitMethtod)(const Vector3*, index_type, bool, index_type);
     static InitMethtod initializers[ModesEnd];
 
-    void UninitializedSpline() const { ASSERT(false);}
+    void UninitializedSpline() const { /*ASSERT*/(false);}
 
 public:
 
@@ -186,7 +186,7 @@ public:
             new_length = cacher(*this, i);
             lengths[++i] = new_length;
 
-            ASSERT(prev_length <= new_length);
+            //ASSERT(prev_length <= new_length);
             prev_length = new_length;
         }
     }
