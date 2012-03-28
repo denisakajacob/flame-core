@@ -470,7 +470,6 @@ public:
                             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
                             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_NPC);
                             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
-							me->RemoveFlag (this=0x0, index=59, oldFlag=2);
                             me->SetHealth(me->GetMaxHealth()/2);
                             me->SetInCombatWithZone();
                             setStage(6);
@@ -643,7 +642,6 @@ public:
                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_NPC);
-				me->RemoveFlag (this=0x0, index=59, oldFlag=2);
                 intro = true;
                 AttackStart(pWho);
                 setStage(1);
